@@ -1,0 +1,52 @@
+ALGORITHM read_sentence
+VAR
+    sentence : STRING;
+    chars_nber, words_nber, vowels_nber, counter_1, counter_2, counter_3 : INTEGER;
+    counter_1 := 0
+    counter_2 := 0
+    counter_3 := 0
+BEGIN
+    // Reading the sentence
+    Read (sentence);
+
+    // Count the number of characters = sentence length
+    // Until we meet the "." we add the number of character of the sentence to the current number and increment the counter
+    WHILE (sentence[counter_1] <> "." ) DO
+        chars_nber := chars_nber + 1;
+        counter_1 := counter_1 + 1;
+    END_WHILE
+    
+    // Write the number of character of the sentence
+    Write (chars_nber);
+
+    // The number of words in the sentence
+    // Each time we find a space we count a word to the current number of word and increment the counter while the counter < sentence length
+    REPEAT
+        IF (sentence[counter_2] = " ") THEN
+            words_nber := words_nber + 1;
+        END_IF
+        counter_2 := counter_2 + 1;
+    UNTIL (counter_2 < chars_nber)
+    
+    // Write the number of word of the sentence
+    Write (words_nber);
+
+    // The number of vowels in the sentence
+    // For each character of the sentence we try to find if it match with the six vowels of the alphabet letter
+    // If it do we increment the vowels_nber and go to the next character until we finish the sentence
+    WHILE (counter_3 < chars_nber) DO
+        SWITCH (sentence[counter_3]) DO
+            case "a": vowels_nber := vowels_nber + 1; BREAK;
+            case "e": vowels_nber := vowels_nber + 1; BREAK;
+            case "i": vowels_nber := vowels_nber + 1; BREAK;
+            case "o": vowels_nber := vowels_nber + 1; BREAK;
+            case "u": vowels_nber := vowels_nber + 1; BREAK;
+            case "y": vowels_nber := vowels_nber + 1; BREAK;
+            default : 
+        END_SWITCH
+        counter_3 := counter_3 + 1;
+    END_WHILE
+    
+    // Write the number of vowels of the sentence
+    Write (vowels_nber);
+END
